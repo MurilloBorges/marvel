@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { isEmpty } from '../helpers/funcoes';
+import { isEmpty } from '../helpers/functions';
 import IconSVG from '../components/Ui/IconSVG';
 import api from '../services/api';
 import { login } from '../services/authentication';

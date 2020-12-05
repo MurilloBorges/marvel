@@ -27,7 +27,7 @@ class AuthenticateController {
       if (!(await schema.isValid(req.body))) {
         return res
           .status(400)
-          .json({ error: 'Validações dos campos incorreta' });
+          .json({ error: 'Field validations incorrect' });
       }
 
       const { email, password } = req.body;
@@ -35,11 +35,11 @@ class AuthenticateController {
       const user = await User.findOne({ email }).select('+password');
 
       if (!user) {
-        return res.status(404).json({ error: 'Usuário não cadastrado' });
+        return res.status(404).json({ error: 'User not registered' });
       }
 
       if (password && !(await bcrypt.compare(password, user.password))) {
-        return res.status(401).json({ error: 'Senha inválida' });
+        return res.status(401).json({ error: 'Invalid password' });
       }
 
       user.password = undefined;

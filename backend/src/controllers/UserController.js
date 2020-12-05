@@ -2,7 +2,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import { generateToken } from './AuthenticateController';
-import { isEmpty } from '../helpers/funcoes';
+import { isEmpty } from '../helpers/functions';
 
 class UserController {
   async index(req, res) {
@@ -19,7 +19,7 @@ class UserController {
       const user = await User.findById(req.params.id);
 
       if (isEmpty(user)) {
-        return res.status(404).json({ error: 'Usuário não cadastrado' });
+        return res.status(404).json({ error: 'User not registered' });
       }
 
       return res.json(user);
@@ -43,7 +43,7 @@ class UserController {
       if (!(await schema.isValid(req.body))) {
         return res
           .status(400)
-          .json({ error: 'Validações dos campos incorreta' });
+          .json({ error: 'Field validations incorrect' });
       }
 
       const existsUser = await User.findOne({ email: req.body.email });
@@ -51,7 +51,7 @@ class UserController {
       if (existsUser) {
         return res
           .status(400)
-          .json({ error: 'Já existe uma conta vinculada a este e-mail' });
+          .json({ error: 'There is already an account linked to this email' });
       }
 
       const { _id, name, email } = await User.create(req.body);
@@ -78,7 +78,7 @@ class UserController {
       if (!(await schema.isValid(req.body))) {
         return res
           .status(400)
-          .json({ error: 'Validações dos campos incorreta' });
+          .json({ error: 'Field validations incorrect' });
       }
 
       const { name } = req.body;
@@ -86,7 +86,7 @@ class UserController {
       const user = await User.findById(req.params.id);
 
       if (isEmpty(user)) {
-        return res.status(404).json({ error: 'Usuário não cadastrado' });
+        return res.status(404).json({ error: 'User not registered' });
       }
 
       await User.findByIdAndUpdate(req.params.id, {
@@ -104,7 +104,7 @@ class UserController {
       const user = await User.findByIdAndDelete(req.params.id);
 
       if (isEmpty(user)) {
-        return res.status(404).json({ error: 'Usuário não cadastrado' });
+        return res.status(404).json({ error: 'User not registered' });
       }
 
       return res.status(204).json();

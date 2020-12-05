@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import IconSVG from '../components/Ui/IconSVG';
 import api from '../services/api';
 import { login } from '../services/authentication';
-import { isEmpty } from '../helpers/funcoes';
+import { isEmpty } from '../helpers/functions';
 
 const loading = (payload) => ({
   type: 'LOADER', payload,

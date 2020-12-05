@@ -2,7 +2,7 @@
 import * as Yup from 'yup';
 import bcrypt from 'bcryptjs';
 import User from '../models/User';
-import { isEmpty } from '../helpers/funcoes';
+import { isEmpty } from '../helpers/functions';
 
 class PasswordController {
   async store(req, res) {
@@ -17,7 +17,7 @@ class PasswordController {
       if (!(await schema.isValid(req.body))) {
         return res
           .status(400)
-          .json({ error: 'Validações dos campos incorreta' });
+          .json({ error: 'Field validations incorrect' });
       }
 
       const { oldPassword, newPassword } = req.body;
@@ -25,11 +25,11 @@ class PasswordController {
       const user = await User.findById(req.params.id).select('+password');
 
       if (isEmpty(user)) {
-        return res.status(404).json({ error: 'Usuário não cadastrado' });
+        return res.status(404).json({ error: 'User not registered' });
       }
 
       if (oldPassword && !(await bcrypt.compare(oldPassword, user.password))) {
-        return res.status(400).json({ error: 'Senhas não correspondem' });
+        return res.status(400).json({ error: 'Passwords do not match' });
       }
 
       await User.findByIdAndUpdate(req.params.id, {
