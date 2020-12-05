@@ -4,23 +4,28 @@ import User from './controllers/UserController';
 import authMiddleware from './middlewares/auth';
 import Authenticate from './controllers/AuthenticateController';
 import Password from './controllers/PasswordController';
+import Character from './controllers/CharacterController';
 
 const routes = new Router();
 
-// USUÁRIO
-routes.get('/users', User.index);
-routes.get('/users/:id', User.show);
+// USER
 routes.post('/users', User.store);
 
-// AUTENTICAÇÃO
+// AUTHENTICATE
 routes.post('/authenticate', Authenticate.store);
 routes.use(authMiddleware);
 
-// USUÁRIO
+// USER
+routes.get('/users', User.index);
+routes.get('/users/:id', User.show);
 routes.delete('/users/:id', User.delete);
 routes.patch('/users/:id', User.update);
 
-// SENHA
+// PASSWORD USER
 routes.post('/users/:id/passwords', Password.store);
+
+// CHARACTER
+routes.get('/characters', Character.index);
+routes.get('/characters/:id', Character.show);
 
 export default routes;
