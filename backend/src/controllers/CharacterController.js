@@ -1,13 +1,16 @@
-import 'dotenv/config';
+import { response } from 'express';
 import { isEmpty } from '../helpers/functions';
 import api from '../service/api';
+import Auth from '../service/authentication';
 
 class CharacterController {
   async index(req, res) {
     try {
-      const characters = await api.get(`/v1/public/characters?apikey=${process.env.MARVEL_PUBLIC_KEY}&hash=${process.env.MARVEL_PRIVATE_KEY}`)
-      console.log(characters);
-      res.json(characters);
+      const characters = await api.get(
+        `/v1/public/characters?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
+      );
+
+      res.json(characters.data.data);
     } catch (error) {
       res.status(500).json({ error });
     }
