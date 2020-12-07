@@ -18,7 +18,7 @@ const logger = winston.createLogger({
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.label({ label: path.basename(process.mainModule.filename) }),
     winston.format.printf(
-      info =>
+      (info) =>
         `[${info.timestamp}] [${info.label}] ${info.level}: ${info.message}`
     )
   ),
@@ -27,7 +27,7 @@ const logger = winston.createLogger({
 });
 
 logger.stream = {
-  write: message => {
+  write: (message) => {
     logger.info(message);
   },
 };

@@ -9,15 +9,11 @@ class PasswordController {
     try {
       const schema = Yup.object().shape({
         oldPassword: Yup.string().required(),
-        newPassword: Yup.string()
-          .required()
-          .min(6),
+        newPassword: Yup.string().required().min(6),
       });
 
       if (!(await schema.isValid(req.body))) {
-        return res
-          .status(400)
-          .json({ error: 'Field validations incorrect' });
+        return res.status(400).json({ error: 'Field validations incorrect' });
       }
 
       const { oldPassword, newPassword } = req.body;
