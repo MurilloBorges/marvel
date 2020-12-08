@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Configurando eslint com prettier no projeto
+> [Documentação da configuração](https://henriquetavares.com/pt-br/setting-eslint-on-reactjs-and-react-native/ "Clique aqui para ver a documentação!")
