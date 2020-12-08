@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
 const loading = (payload) => ({
-  type: 'LOADER', payload,
+  type: 'LOADER',
+  payload,
 });
 
 export default function Characters({ history }) {

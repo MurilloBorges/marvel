@@ -1,10 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
 import React from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { isAuthenticated } from '../services/authentication';
 
 // Pages
@@ -14,10 +11,14 @@ import Error from '../pages/404';
 import Comics from '../pages/Comics';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest}
-    render={
-      (props) => (isAuthenticated() ? (<Component {...props} />)
-        : (<Redirect to={{ pathname: '/', state: { from: props.location } }} />))
+  <Route
+    {...rest}
+    render={(props) =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+      )
     }
   />
 );

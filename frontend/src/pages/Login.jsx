@@ -9,7 +9,8 @@ import api from '../services/api';
 import { login } from '../services/authentication';
 
 const loading = (payload) => ({
-  type: 'LOADER', payload,
+  type: 'LOADER',
+  payload,
 });
 
 export default function Login({ history }) {
@@ -37,16 +38,23 @@ export default function Login({ history }) {
     }
     try {
       dispatch(loading({ loading: true }));
-      await api.post('/authenticate', { email: authenticate.email, password: authenticate.password }).then((res) => {
-        login(res.data.token);
-        history.push('/comics');
-      }).catch((error) => {
-        if ([400, 404].includes(error.response.status)) {
-          toast.info(error.response.data.error);
-        }
-      }).finally(() => {
-        dispatch(loading({ loading: false }));
-      });
+      await api
+        .post('/authenticate', {
+          email: authenticate.email,
+          password: authenticate.password,
+        })
+        .then((res) => {
+          login(res.data.token);
+          history.push('/comics');
+        })
+        .catch((error) => {
+          if ([400, 404].includes(error.response.status)) {
+            toast.info(error.response.data.error);
+          }
+        })
+        .finally(() => {
+          dispatch(loading({ loading: false }));
+        });
     } catch (error) {
       toast.error(`Falha na requisição: ${error}`);
     }
@@ -57,18 +65,8 @@ export default function Login({ history }) {
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="login-icons">
-          <IconSVG
-            icon="user"
-            height="8rem"
-            width="8rem"
-            fill="#f0141e"
-          />
-          <IconSVG
-            icon="marvel"
-            height="12rem"
-            width="12rem"
-            fill="#fff"
-          />
+          <IconSVG icon="user" height="8rem" width="8rem" fill="#f0141e" />
+          <IconSVG icon="marvel" height="12rem" width="12rem" fill="#fff" />
         </div>
         <input
           type="text"
@@ -87,8 +85,15 @@ export default function Login({ history }) {
           value={authenticate.password}
           onChange={handleInput}
         />
-        <button type="submit" className="btn btn-info" data-cy="entrar">Entrar</button>
-        <button type="button" className="btn btn-light" data-cy="cadastrar" onClick={() => history.push('/sign-up')}>
+        <button type="submit" className="btn btn-info" data-cy="entrar">
+          Entrar
+        </button>
+        <button
+          type="button"
+          className="btn btn-light"
+          data-cy="cadastrar"
+          onClick={() => history.push('/sign-up')}
+        >
           CADASTRAR
         </button>
       </form>

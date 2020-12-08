@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -7,7 +9,8 @@ import { login } from '../services/authentication';
 import { isEmpty } from '../helpers/functions';
 
 const loading = (payload) => ({
-  type: 'LOADER', payload,
+  type: 'LOADER',
+  payload,
 });
 
 export default function SignUp({ history }) {
@@ -31,26 +34,34 @@ export default function SignUp({ history }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (isEmpty(signUp.name) || isEmpty(signUp.email) || isEmpty(signUp.password)) {
+    if (
+      isEmpty(signUp.name) ||
+      isEmpty(signUp.email) ||
+      isEmpty(signUp.password)
+    ) {
       return toast.error('Todos os campos são obrigatórios.');
     }
     try {
       dispatch(loading({ loading: true }));
-      await api.post('/users', {
-        name: signUp.name,
-        email: signUp.email,
-        password: signUp.password,
-      }).then((res) => {
-        toast.success('Usuário cadastrado com sucesso!');
-        login(res.data.token);
-        history.push('/comics');
-      }).catch((error) => {
-        if (error.response.status === 400) {
-          toast.info(error.response.data.error);
-        }
-      }).finally(() => {
-        dispatch(loading({ loading: false }));
-      });
+      await api
+        .post('/users', {
+          name: signUp.name,
+          email: signUp.email,
+          password: signUp.password,
+        })
+        .then((res) => {
+          toast.success('Usuário cadastrado com sucesso!');
+          login(res.data.token);
+          history.push('/comics');
+        })
+        .catch((error) => {
+          if (error.response.status === 400) {
+            toast.info(error.response.data.error);
+          }
+        })
+        .finally(() => {
+          dispatch(loading({ loading: false }));
+        });
     } catch (error) {
       toast.error(`Falha na requisição: ${error}`);
     }
@@ -62,18 +73,8 @@ export default function SignUp({ history }) {
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="login-icons">
-          <IconSVG
-            icon="user"
-            height="8rem"
-            width="8rem"
-            fill="#f0141e"
-          />
-          <IconSVG
-            icon="marvel"
-            height="12rem"
-            width="12rem"
-            fill="#fff"
-          />
+          <IconSVG icon="user" height="8rem" width="8rem" fill="#f0141e" />
+          <IconSVG icon="marvel" height="12rem" width="12rem" fill="#fff" />
         </div>
         <input
           type="text"
@@ -100,8 +101,15 @@ export default function SignUp({ history }) {
           value={signUp.password}
           onChange={handleInput}
         />
-        <button type="submit" className="btn btn-info" data-cy="cadastrar">Cadastrar</button>
-        <button type="button" className="btn btn-light" data-cy="login" onClick={() => history.push('/login')}>
+        <button type="submit" className="btn btn-info" data-cy="cadastrar">
+          Cadastrar
+        </button>
+        <button
+          type="button"
+          className="btn btn-light"
+          data-cy="login"
+          onClick={() => history.push('/login')}
+        >
           LOGIN
         </button>
       </form>
