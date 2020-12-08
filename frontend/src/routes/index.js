@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import {
   BrowserRouter,
@@ -14,7 +11,7 @@ import { isAuthenticated } from '../services/authentication';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Error from '../pages/404';
-import BuscaCep from '../pages/BuscaCep';
+import Comics from '../pages/Comics';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest}
@@ -33,7 +30,7 @@ export default function routes() {
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
         <Route path="/sign-up" exact component={SignUp} />
-        <PrivateRoute path="/busca-cep" exact component={BuscaCep} />
+        <PrivateRoute path="/comics" exact component={Comics} />
 
         {/* Página not found */}
         <Route path="*" exact component={Error} />

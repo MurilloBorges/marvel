@@ -39,7 +39,7 @@ export default function Login({ history }) {
       dispatch(loading({ loading: true }));
       await api.post('/authenticate', { email: authenticate.email, password: authenticate.password }).then((res) => {
         login(res.data.token);
-        history.push('/busca-cep');
+        history.push('/comics');
       }).catch((error) => {
         if ([400, 404].includes(error.response.status)) {
           toast.info(error.response.data.error);
@@ -56,12 +56,20 @@ export default function Login({ history }) {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit}>
-        <IconSVG
-          icon="user"
-          height="10rem"
-          width="10rem"
-          fill="#666666"
-        />
+        <div className="login-icons">
+          <IconSVG
+            icon="user"
+            height="8rem"
+            width="8rem"
+            fill="#f0141e"
+          />
+          <IconSVG
+            icon="marvel"
+            height="12rem"
+            width="12rem"
+            fill="#fff"
+          />
+        </div>
         <input
           type="text"
           autoFocus

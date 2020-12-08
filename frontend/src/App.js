@@ -16,7 +16,7 @@ function App() {
             icon="spinner"
             height="10rem"
             width="10rem"
-            fill="#3498db"
+            fill="#f0141e"
           />
         </div>
       )}
