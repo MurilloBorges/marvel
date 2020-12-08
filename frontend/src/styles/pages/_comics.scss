@@ -39,7 +39,7 @@
       justify-content: center;
       align-items: center;
     }
-    &-category {
+    &-comic {
       margin: 2rem;
       min-width: 26rem;
       display: flex;
@@ -48,18 +48,34 @@
       box-shadow: #00000022 1vw 1vw 5vw;
       padding: 2rem;
       border-radius: 2vw;
+      align-items: center;
 
-      button {
+      &-favorite {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        position: absolute;
+        margin-top: -2.7vh;
+        margin-left: -25.5vw;
+      }
+
+      &-get-datails {
         border: none;
         background-color: transparent;
         overflow: hidden;
         outline: none;
         color: #666666;
         font-weight: bold;
-        margin: 0vh auto 0;
+        margin: 3vh auto 0;
         svg {
           margin: auto 1vw;
         }
+      }
+
+      img {
+        width: 21.6rem;
+        height: 32.4rem;
+        border-radius: 0.5rem;
       }
     }
   }
@@ -85,6 +101,12 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+    }
+    &-comic {
+      &-favorite {
+        margin-top: -2.8vh;
+        margin-left: -8.3vw;
+      }
     }
   }
 }

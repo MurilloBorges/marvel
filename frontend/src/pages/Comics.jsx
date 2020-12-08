@@ -35,7 +35,7 @@ export default function Comics({ history }) {
         .then((res) => {
           console.log(res.data);
           if (res.status === 200) {
-            dispatch(setComics([...res.data]));
+            dispatch(setComics([...res.data.results]));
             dispatch(setUpdateDate({ updateDate: new Date() }));
           }
         })
@@ -71,6 +71,17 @@ export default function Comics({ history }) {
     });
   }
 
+  async function handleFavorite(id, index) {
+    const comics = {
+      ...storage.comics,
+      [index]: {
+        ...storage.comics[index],
+        favorite: !storage.comics[index].favorite,
+      },
+    };
+    dispatch(setComics(Object.values(comics).map((comic) => ({ ...comic }))));
+  }
+
   return (
     <div className="comics">
       <h1>Comics</h1>
@@ -93,23 +104,40 @@ export default function Comics({ history }) {
       </div>
       <div className="comics-container">
         {storage.comics
-          .filter((e) =>
-            e.strCategory.toUpperCase().includes(search.toUpperCase())
-          )
+          .filter((e) => e.title.toUpperCase().includes(search.toUpperCase()))
           .map((data, index) => (
-            <div className="comics-category" key={index.toString()}>
+            <div className="comics-comic" key={index.toString()}>
               <button
+                className="comics-comic-favorite"
                 type="button"
-                data-cy="button-get-drinks"
+                data-cy="button-comic-favorite"
+                onClick={() => handleFavorite(data.id, index)}
+              >
+                <IconSVG
+                  icon="star-full"
+                  height="4rem"
+                  width="4rem"
+                  fill={data.favorite ? '#FFD700' : '#f9e4a7'}
+                  className="comics-comic-favorite"
+                />
+              </button>
+              <img
+                src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+                alt={`comic-${index.toString()}`}
+              />
+              <button
+                className="comics-comic-get-datails"
+                type="button"
+                data-cy="button-get-details"
                 onClick={() => handleSubmit(data.strCategory)}
               >
                 <IconSVG
                   icon="search"
                   height="3rem"
                   width="3rem"
-                  fill="#00BEE9"
+                  fill="#f0141e"
                 />
-                {data.strCategory}
+                {data.title}
               </button>
             </div>
           ))}
