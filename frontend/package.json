@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
     "node-sass": "^4.13.1",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
@@ -45,8 +46,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "chalk": "^4.0.0",
-    "cypress": "^5.0.0",
+    "chalk": "^4.1.0",
+    "cypress": "^6.1.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.0.0",
