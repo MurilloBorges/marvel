@@ -8,14 +8,18 @@ class CharacterController {
       const characters = await api.get(
         `/v1/public/characters?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );
-      return res.json(characters.data.data);
+      res.json(characters.data.data);
     } catch (error) {
       res.status(500).json({ error });
     }
   }
 
-  async show(req, res) {
+  async show(req, res, next) {
     try {
+      if (req.params.id === 'favorites') {
+        return next('route');
+      }
+
       const character = await api.get(
         `/v1/public/characters/${req.params.id}?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );

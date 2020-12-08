@@ -8,14 +8,18 @@ class ComicController {
       const comics = await api.get(
         `/v1/public/comics?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );
-      return res.json(comics.data.data);
+      res.json(comics.data.data);
     } catch (error) {
       res.status(500).json({ error });
     }
   }
 
-  async show(req, res) {
+  async show(req, res, next) {
     try {
+      if (req.params.id === 'favorites') {
+        return next('route');
+      }
+
       const comic = await api.get(
         `/v1/public/comics/${req.params.id}?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );

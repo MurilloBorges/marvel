@@ -8,9 +8,8 @@ class FavoriteCharacterController {
       const favoritesCharacters = await FavoriteCharacter.find({
         user: req.userId,
       });
-      return res.json(favoritesCharacters);
+      res.json(favoritesCharacters);
     } catch (error) {
-      console.log('teste');
       res.status(500).json({ error });
     }
   }
@@ -55,7 +54,9 @@ class FavoriteCharacterController {
 
   async delete(req, res) {
     try {
-      const favoriteCharacter = await FavoriteCharacter.findByIdAndDelete(req.params.id);
+      const favoriteCharacter = await FavoriteCharacter.findByIdAndDelete(
+        req.params.id
+      );
 
       if (isEmpty(favoriteCharacter)) {
         return res.status(404).json({ error: 'Favorite character not found' });

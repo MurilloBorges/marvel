@@ -8,7 +8,7 @@ class UserController {
   async index(req, res) {
     try {
       const users = await User.find();
-      return res.json(users);
+      res.json(users);
     } catch (error) {
       res.status(500).json({ error });
     }

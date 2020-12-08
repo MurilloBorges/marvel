@@ -8,7 +8,7 @@ class FavoriteComicController {
       const favoritesComics = await FavoriteComic.find({
         user: req.userId,
       });
-      return res.json(favoritesComics);
+      res.json(favoritesComics);
     } catch (error) {
       res.status(500).json({ error });
     }
@@ -38,7 +38,7 @@ class FavoriteComicController {
         return res.status(400).json({ error: 'Field validations incorrect' });
       }
 
-      const comicId = req.body.id;
+      const comicId = req.params.id;
       const { _id } = await FavoriteComic.create({
         user: req.userId,
         comicId,
