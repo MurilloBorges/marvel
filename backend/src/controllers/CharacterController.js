@@ -8,8 +8,7 @@ class CharacterController {
       const characters = await api.get(
         `/v1/public/characters?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );
-
-      res.json(characters.data.data);
+      return res.json(characters.data.data);
     } catch (error) {
       res.status(500).json({ error });
     }

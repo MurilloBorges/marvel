@@ -8,8 +8,7 @@ class ComicController {
       const comics = await api.get(
         `/v1/public/comics?ts=${Auth.ts}&apikey=${Auth.apikey}&hash=${Auth.hash}`
       );
-
-      res.json(comics.data.data);
+      return res.json(comics.data.data);
     } catch (error) {
       res.status(500).json({ error });
     }

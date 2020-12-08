@@ -8,9 +8,9 @@ class FavoriteCharacterController {
       const favoritesCharacters = await FavoriteCharacter.find({
         user: req.userId,
       });
-
-      res.json(favoritesCharacters);
+      return res.json(favoritesCharacters);
     } catch (error) {
+      console.log('teste');
       res.status(500).json({ error });
     }
   }
