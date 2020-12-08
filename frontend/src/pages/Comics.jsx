@@ -76,7 +76,10 @@ export default function Comics({ history }) {
       ...storage.comics,
       [index]: {
         ...storage.comics[index],
-        favorite: !storage.comics[index].favorite,
+        favorite: {
+          id: '',
+          favorite: !storage.comics[index].favorite.favorite,
+        },
       },
     };
     dispatch(setComics(Object.values(comics).map((comic) => ({ ...comic }))));
@@ -117,7 +120,7 @@ export default function Comics({ history }) {
                   icon="star-full"
                   height="4rem"
                   width="4rem"
-                  fill={data.favorite ? '#FFD700' : '#f9e4a7'}
+                  fill={data.favorite.favorite ? '#FFD700' : '#f9e4a7'}
                   className="comics-comic-favorite"
                 />
               </button>
