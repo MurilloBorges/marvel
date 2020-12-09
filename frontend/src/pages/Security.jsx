@@ -16,12 +16,13 @@ const setUser = (payload) => ({
   payload,
 });
 
-export default function Profile({ history }) {
+export default function Security({ history }) {
   const storage = useSelector((store) => store);
   const dispatch = useDispatch();
-  const [profile, setProfile] = useState({
-    email: storage.user.email,
-    name: storage.user.name,
+  const [security, setSecurity] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
   });
 
   useEffect(() => {
@@ -29,28 +30,35 @@ export default function Profile({ history }) {
   }, []);
 
   function handleInput({ currentTarget: { value, name } }) {
-    setProfile({
-      ...profile,
+    setSecurity({
+      ...security,
       [name]: value,
     });
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (isEmpty(profile.name)) {
-      return toast.error('The name field is required');
+    if (isEmpty(security.oldPassword)) {
+      return toast.error('Enter the old password');
+    }
+    if (isEmpty(security.newPassword)) {
+      return toast.error('Enter the new password');
+    }
+
+    if (security.newPassword !== security.confirmNewPassword) {
+      return toast.error('Invalid password confirmation');
     }
 
     try {
       dispatch(loading({ loading: true }));
       await api
-        .patch(`users/${storage.user._id}`, {
-          name: profile.name,
+        .post(`users/${storage.user._id}/passwords`, {
+          oldPassword: security.oldPassword,
+          newPassword: security.newPassword,
         })
         .then((res) => {
-          if (res.status === 204) {
+          if (res.status === 201) {
             toast.success('Change successfully saved');
-            dispatch(setUser({ ...storage.user, name: profile.name }));
             history.push('/comics');
           }
         })
@@ -71,28 +79,39 @@ export default function Profile({ history }) {
   return (
     <div className="login-container profile">
       <form onSubmit={handleSubmit}>
-        <h1>Your profile</h1>
+        <h1>Your security</h1>
         <input
-          type="text"
+          type="password"
           className="form-control"
-          id="email"
-          name="email"
-          value={profile.email}
-          data-cy="email"
-          disabled
+          id="oldPassword"
+          name="oldPassword"
+          value={security.oldPassword}
+          onChange={handleInput}
+          data-cy="oldPassword"
+          placeholder="Type your old password"
         />
         <input
-          type="text"
+          type="password"
           className="form-control"
-          id="name"
-          name="name"
-          value={profile.name}
-          data-cy="name"
+          id="newPassword"
+          name="newPassword"
+          value={security.newPassword}
+          data-cy="newPassword"
           onChange={handleInput}
-          placeholder="Type your name"
+          placeholder="Type your new password"
+        />
+        <input
+          type="password"
+          className="form-control"
+          id="confirmNewPassword"
+          name="confirmNewPassword"
+          value={security.confirmNewPassword}
+          data-cy="confirmNewPassword"
+          onChange={handleInput}
+          placeholder="Type your password confirmation"
         />
         <button type="submit" className="btn btn-danger" data-cy="entrar">
-          Update profile
+          Update password
         </button>
       </form>
     </div>

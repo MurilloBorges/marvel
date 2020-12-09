@@ -54,7 +54,7 @@ export default function Login({ history }) {
           history.push('/comics');
         })
         .catch((error) => {
-          if ([400, 404].includes(error.response.status)) {
+          if ([400, 401, 404].includes(error.response.status)) {
             toast.info(error.response.data.error);
           }
         })
@@ -79,7 +79,7 @@ export default function Login({ history }) {
           autoFocus
           data-cy="email"
           name="email"
-          placeholder="Digite seu e-mail"
+          placeholder="Type your e-mail"
           value={authenticate.email}
           onChange={handleInput}
         />
@@ -87,7 +87,7 @@ export default function Login({ history }) {
           type="password"
           data-cy="password"
           name="password"
-          placeholder="Digite sua senha"
+          placeholder="Type your password"
           value={authenticate.password}
           onChange={handleInput}
         />

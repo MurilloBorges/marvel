@@ -87,7 +87,7 @@ export default function SignUp({ history }) {
           autoFocus
           data-cy="name"
           name="name"
-          placeholder="Digite seu nome"
+          placeholder="Type your name"
           value={signUp.name}
           onChange={handleInput}
         />
@@ -95,7 +95,7 @@ export default function SignUp({ history }) {
           type="text"
           data-cy="email"
           name="email"
-          placeholder="Digite seu e-mail"
+          placeholder="Type your e-mail"
           value={signUp.email}
           onChange={handleInput}
         />
@@ -103,7 +103,7 @@ export default function SignUp({ history }) {
           type="password"
           data-cy="password"
           name="password"
-          placeholder="Digite sua senha"
+          placeholder="Type your password"
           value={signUp.password}
           onChange={handleInput}
         />
