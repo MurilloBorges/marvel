@@ -1,71 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Marvel
+Implementar uma aplicação client-side onde será encontrar todas as informações sobre as comics e characters da marvel;
 
-## Available Scripts
+## Aplicação first mobile
 
-In the project directory, you can run:
+# Tecnologias utilizadas
+- Para o frontend foi utilizado a ferramenta ReactJS;
 
-### `yarn start`
+- Para os testes automaizados e2e foi utilizado o framework cypress;
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Para os testes unitários foi utilizado o framework jest;
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+# Requisitos para a execução do projeto
+- Ter o NodeJS instalado de preferência a última versão ou superior a v12.16.1;
+> [Instalando o Node](https://nodejs.org/pt-br/download/package-manager/ "Clique aqui para aprender a instalar o Node!")
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Ter o gerenciador de dependências yarn instalado (npm também funciona, porém recomendo fortemente o yarn)
+> [Instalando o yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#debian-stable "Clique aqui para aprender a instalar o yarn!")
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Executando o projeto
+1. Acessar a pasta frontend e executar os seguintes comandos:
+> yarn install
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+> yarn start (obs: configurar o arquivo .env na raiz da pasta frontend: copiar conteúdo do .env.example)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> yarn cy:open (para executar os testes e2e no frontend) | (obs: para linux caso dê problema de permissão executar o comando "/home sudo chmod -R 777 murillo/.config/Cypress")
 
-### `yarn eject`
+> divirta-se com as funcionalidades
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Executando o projeto através de docker run
+1. Executar os seguintes comandos na pasta frontend
+> Criar uma imagem
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> > sudo docker build -t reactjs .
 
-## Learn More
+> Criar um container com a imagem criada acima
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> > sudo docker run --name nodejs -p 3000:3000 -d reactjs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Ativar um container
 
-### Code Splitting
+> > sudo docker start reactjs
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+> Parar o container
 
-### Analyzing the Bundle Size
+> > sudo docker stop reactjs
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+> Finalizar o container
 
-### Making a Progressive Web App
+> > sudo docker kill reactjs
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Executando o projeto através de docker-compose
+1. Executar os seguintes comandos na pasta frontend
+> Subir o ambiente frontend
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+> > sudo docker-compose up
 
-### Deployment
+> Derrubar o ambiente
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+> > ctrl + c
 
-### `yarn build` fails to minify
+> > sudo docker-compose down
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### URL para acessar o projeto http://localhost:3000/login ou http://localhost:3000
 
 
 ## Configurando eslint com prettier no projeto
