@@ -59,17 +59,17 @@ export default function Comics({ history }) {
     const past = moment(storage.updateDate);
     const duration = moment.duration(now.diff(past));
 
-    // Só realiza a consulta se o storage de categorias estiver vazio
+    // Só realiza a consulta se o storage de comics estiver vazio
     // ou se a data da última requisição for maior que 1 hora
     if (storage.comics.length === 0 || duration.asHours() > 1) {
       getComics();
     }
   }, []);
 
-  function handleSubmit(category) {
+  function handleSubmit(id) {
     history.push({
-      pathname: '/drinks',
-      search: `?query=${category}`,
+      pathname: '/comics/details',
+      search: `?query=${id}`,
     });
   }
 
@@ -155,7 +155,7 @@ export default function Comics({ history }) {
                   className="comics-comic-get-datails"
                   type="button"
                   data-cy="button-get-details"
-                  onClick={() => handleSubmit(data.strCategory)}
+                  onClick={() => handleSubmit(data.id)}
                 >
                   <IconSVG
                     icon="search"
