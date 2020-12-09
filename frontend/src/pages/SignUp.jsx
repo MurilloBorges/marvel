@@ -13,6 +13,11 @@ const loading = (payload) => ({
   payload,
 });
 
+const setUser = (payload) => ({
+  type: 'USER',
+  payload,
+});
+
 export default function SignUp({ history }) {
   const dispatch = useDispatch();
   const [signUp, setSignUp] = useState({
@@ -51,6 +56,7 @@ export default function SignUp({ history }) {
         })
         .then((res) => {
           toast.success('Usuário cadastrado com sucesso!');
+          dispatch(setUser({ ...res.data.user }));
           login(res.data.token);
           history.push('/comics');
         })
@@ -101,7 +107,7 @@ export default function SignUp({ history }) {
           value={signUp.password}
           onChange={handleInput}
         />
-        <button type="submit" className="btn btn-info" data-cy="cadastrar">
+        <button type="submit" className="btn btn-danger" data-cy="cadastrar">
           Cadastrar
         </button>
         <button

@@ -13,6 +13,11 @@ const loading = (payload) => ({
   payload,
 });
 
+const setUser = (payload) => ({
+  type: 'USER',
+  payload,
+});
+
 export default function Login({ history }) {
   const dispatch = useDispatch();
   const [authenticate, setAuthenticate] = useState({
@@ -44,6 +49,7 @@ export default function Login({ history }) {
           password: authenticate.password,
         })
         .then((res) => {
+          dispatch(setUser({ ...res.data.user }));
           login(res.data.token);
           history.push('/comics');
         })
@@ -85,7 +91,7 @@ export default function Login({ history }) {
           value={authenticate.password}
           onChange={handleInput}
         />
-        <button type="submit" className="btn btn-info" data-cy="entrar">
+        <button type="submit" className="btn btn-danger" data-cy="entrar">
           Entrar
         </button>
         <button

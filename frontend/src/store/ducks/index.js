@@ -4,6 +4,7 @@ export const Types = {
   LOADING: 'LOADER',
   CLEAR: 'CLEAR',
   COMICS: 'COMICS',
+  USER: 'USER',
   UPDATEDATE: 'UPDATEDATE',
 };
 
@@ -11,6 +12,7 @@ export const initialState = {
   loading: false,
   comics: [],
   updateDate: moment(new Date()),
+  user: {},
 };
 
 export function loader(state = initialState, action) {
@@ -29,6 +31,11 @@ export function loader(state = initialState, action) {
       return {
         ...state,
         comics: [...action.payload],
+      };
+    case Types.USER:
+      return {
+        ...state,
+        user: { ...action.payload },
       };
     case Types.UPDATEDATE:
       return {

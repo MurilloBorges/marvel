@@ -17,10 +17,10 @@ export default function Menu() {
         <IconSVG icon="th-menu" height="4rem" width="4rem" fill="#224074" />
       </button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a className="dropdown-item" href="/security">
+        <a className="dropdown-item" href="/profile">
           Your profile
         </a>
-        <a className="dropdown-item" href="/profile">
+        <a className="dropdown-item" href="/security">
           Your security
         </a>
         <div className="dropdown-divider" />
