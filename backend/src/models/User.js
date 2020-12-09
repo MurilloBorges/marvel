@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { isNotEmpty } from '../helpers/functions';
 
 const UserSchema = new Schema(
   {
@@ -32,8 +33,10 @@ UserSchema.pre('save', async function (next) {
 });
 
 UserSchema.pre('findOneAndUpdate', async function (next) {
-  const hash = await bcrypt.hash(this.getUpdate().password, 10);
-  this.getUpdate().password = hash;
+  if (isNotEmpty(this.getUpdate().password)) {
+    const hash = await bcrypt.hash(this.getUpdate().password, 10);
+    this.getUpdate().password = hash;
+  }
 
   next();
 });

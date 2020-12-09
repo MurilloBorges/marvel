@@ -82,7 +82,7 @@ class UserController {
       }
 
       await User.findByIdAndUpdate(req.params.id, {
-        name,
+        name
       });
 
       return res.status(204).json();
