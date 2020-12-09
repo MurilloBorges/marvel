@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import icone from '../../assets/static/icons/symbol-defs.svg';
 
-export default function IconSVG({
-  icon,
-  className,
-  width,
-  height,
-  fill,
-}) {
+export default function IconSVG({ icon, className, width, height, fill }) {
   return (
     <svg
       aria-hidden="true"

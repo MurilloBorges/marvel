@@ -9,13 +9,11 @@ const loading = (payload) => ({
 
 export default function Characters({ history }) {
   const dispatch = useDispatch();
-  const [characters, setCharacter] = useState([])
+  const [characters, setCharacter] = useState([]);
 
   useEffect(() => {
     toast.configure();
   }, []);
 
-  return (
-    <div>Characters</div>
-  );
+  return <div>Characters</div>;
 }
