@@ -9,6 +9,7 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Error from '../pages/404';
 import Comics from '../pages/Comics';
+import Profile from '../pages/Profile';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -32,6 +33,7 @@ export default function routes() {
         <Route path="/login" exact component={Login} />
         <Route path="/sign-up" exact component={SignUp} />
         <PrivateRoute path="/comics" exact component={Comics} />
+        <PrivateRoute path="/profile" exact component={Profile} />
 
         {/* Página not found */}
         <Route path="*" exact component={Error} />
