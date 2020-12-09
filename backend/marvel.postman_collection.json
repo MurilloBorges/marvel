@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "85a6796e-9860-4d74-8d07-0b9613d54d1a",
+		"name": "marvel",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "characters marvel",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4f1f266e-aad0-4358-8651-d90bfd6bdfb0",
+						"exec": [
+							"var moment = require('moment-timezone')",
+							"pm.globals.set(\"timestamp\", moment().tz(\"Europe/London\").format(\"llll\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "charset",
+						"value": "utf-8",
+						"type": "text"
+					},
+					{
+						"key": "Date",
+						"value": "{{timestamp}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=57917e01bf16b98429db6f9197460a99&hash=ddb34d3be4acde7cabaa8a8fe31d82d3d02c51c2",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"marvel",
+						"com"
+					],
+					"path": [
+						"v1",
+						"public",
+						"characters"
+					],
+					"query": [
+						{
+							"key": "ts",
+							"value": "1"
+						},
+						{
+							"key": "apikey",
+							"value": "57917e01bf16b98429db6f9197460a99"
+						},
+						{
+							"key": "hash",
+							"value": "ddb34d3be4acde7cabaa8a8fe31d82d3d02c51c2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "character by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters/1009150",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters",
+						"1009150"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorites characters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite character by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters/favorites/5fcebcca0dd119521cfdc6a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters",
+						"favorites",
+						"5fcebcca0dd119521cfdc6a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite character",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters/1009150/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters",
+						"1009150",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite character",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/characters/favorites/5fcebcca0dd119521cfdc6a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"characters",
+						"favorites",
+						"5fcebcca0dd119521cfdc6a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Murillo Borges\",\n    \"email\": \"murilloborges@marvel.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"murilloborges@marvel.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comic by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics/82967",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics",
+						"82967"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite comic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics/82965/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics",
+						"82965",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorites comics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics/favorites",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite comic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics/favorites/5fcee510c07f4b341b89468d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics",
+						"favorites",
+						"5fcee510c07f4b341b89468d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite comic by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmY2FmZjRiNTQ4ODVkMjdjMjg4YTgzZiIsImlhdCI6MTYwNzM3NTM2MiwiZXhwIjoxNjA3NDYxNzYyfQ.Ht1g29rYq1oBbWz07ASxhKlEPEvn4SH78IvnHhZDaz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/comics/favorites/5fcee529c07f4b341b89468e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"comics",
+						"favorites",
+						"5fcee529c07f4b341b89468e"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

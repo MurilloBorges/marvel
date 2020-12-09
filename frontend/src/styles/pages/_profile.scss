@@ -1,0 +1,10 @@
+@media screen and (min-width: $screen-xsm) {
+  .profile {
+    form {
+      h1 {
+        color: $marvel-primary-color;
+        text-align: center;
+      }
+    }
+  }
+}

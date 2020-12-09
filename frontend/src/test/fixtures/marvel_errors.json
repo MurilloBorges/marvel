@@ -1,0 +1,22 @@
+{
+  "invalidEmail": {
+    "success": false,
+    "name": "email",
+    "valid": false
+  },
+  "invalidPass": {
+    "success": false,
+    "name": "password",
+    "valid": false
+  },
+  "incorrectEmail": {
+    "success": false,
+    "name": "email",
+    "valid": false
+  },
+  "incorrectPass": {
+    "success": false,
+    "name": "error",
+    "valid": false
+  }
+}
