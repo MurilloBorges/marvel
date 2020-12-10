@@ -1,1 +1,1 @@
-web: ./backend yarn start
+web: cd ./backend && yarn start
