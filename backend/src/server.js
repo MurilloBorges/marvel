@@ -2,7 +2,9 @@ import 'dotenv/config';
 import app from './app';
 import logger from './middlewares/logger';
 
-app.listen(process.env.PORT || 3333, () => {
+const port = process.env.PORT || 3333;
+
+app.listen(port, () => {
   logger.info('Server runing');
-  console.log('Servidor está rodando na porta: 3333');
+  console.log(`Servidor está rodando na porta: ${port}`);
 });
