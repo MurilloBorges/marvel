@@ -45,4 +45,7 @@ O serviço conterá funções de autenticação, gerenciamentos de usuários e d
 
 - Para documentação da API, foi utilizado o swagger;
 
-- Para o disponibilização do app foi utlizado as ferramentas heroku e netlify;
+- Para o disponibilização do app foi utlizada a ferramenta heroku;
+
+## Install heroku CLI
+> [Install heroku cli](https://devcenter.heroku.com/articles/heroku-cli "Clique aqui para ver a documentação!")
