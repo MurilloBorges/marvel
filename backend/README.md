@@ -206,3 +206,22 @@ Criar um arquivo **.env** e copie o conteudo do arquivo **.env.example** para se
 > > ctrl + c
 
 > > sudo docker-compose down
+
+
+## Executando deploy pelo heroku
+1. Adicionando heroku ao projeto
+> heroku git:remote -a api-marvel-backend
+
+2. Executando o deploy
+> git push heroku main
+
+> heroku reestart
+
+3. Logs
+> heroku logs
+
+> heroku logs --tail
+
+# URL backend
+> https://dashboard.heroku.com/apps/api-marvel-backend
+
