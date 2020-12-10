@@ -55,4 +55,4 @@ O serviço conterá funções de autenticação, gerenciamentos de usuários e d
 > https://api-marvel-backend.herokuapp.com/
 
 # URL frontend
-> https://5fd18ddb00c42b2d1164989b--objective-yonath-b2a243.netlify.app/
+> https://main--objective-yonath-b2a243.netlify.app/
