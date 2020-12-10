@@ -49,3 +49,9 @@ O serviço conterá funções de autenticação, gerenciamentos de usuários e d
 
 ## Install heroku CLI
 > [Install heroku cli](https://devcenter.heroku.com/articles/heroku-cli "Clique aqui para ver a documentação!")
+
+
+# URL backend
+> https://api-marvel-backend.herokuapp.com/
+
+# URL frontend
