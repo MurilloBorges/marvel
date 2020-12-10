@@ -223,5 +223,5 @@ Criar um arquivo **.env** e copie o conteudo do arquivo **.env.example** para se
 > heroku logs --tail
 
 # URL backend
-> https://dashboard.heroku.com/apps/api-marvel-backend
+> https://api-marvel-backend.herokuapp.com/
 
