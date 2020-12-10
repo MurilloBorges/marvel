@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/server.js",
+    "start:deploy": "node src/server.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run"
   },
   "engines": {
     "node": "10.19.0",
-    "npm": "6.14.4"
+    "npm": "",
+    "yarn": "1.22.5"
   },
   "dependencies": {
     "axios": "^0.21.0",
